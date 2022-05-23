@@ -1,0 +1,419 @@
+Oauth 2.0:-> oauth stands for open authorization and 2.0 stands for the version.since 2013
+Oauth 2.0 was introduced.it is a industry standard protocol for authorization, and it 
+provides specific authorization flows for different types of applications that developers
+create.oauth 2 is a authorization framework that enables applications to access user 
+data or perform some operation on user behalf.with the help of oauth you as a user can
+grant another application and access to a data that is stored in another application.
+for example user have a mobile application called photo app that allows a user
+to access their facebook for us.unless this mobile application acquires user permission,
+it will not be able to access user for us because facebook will not allow it.this is
+where authorization framework comes.authorization framework can help user to grant 
+their permission to a third party application like this mobile application or a website
+to access their user data on facebook on their behalf. this third party application
+to access their data on  facebook the user will not need to give this mobile application
+their facebook username and password.there is a specific authorization flow that you
+can use to implement it.with the help of auth we  can have only limited access to users
+data or can perform only a limited set of operations on user's behalf.
+
+before oauth framework design,applicaitons that needed to access user data on the one of 
+social media would create a login form.the user was invited to select one social network
+account they would like to use to login into an application and then the user would provide
+the username and password for that selected social network,having a usename and password
+the mobile application or a website will then use it to send the request to a social 
+network.the mobile applicaiton would store username and password in it's database so that
+they can access user data any time it needs it.this approach is very insecure.the first
+reason why this approach is very insecure is because a user has given away their actual
+username and password to this third party application and now having username and password
+this third party applicaiton can access any data of this user at any time.if initially
+the user provided their username and password to let this mobile alpplication access
+their photos,user data and  it can access at any time it needs it.
+another reason why this approach is insecure is because the user is not aware how secure
+their username and password stored in this mobile application or a website database.
+what if the database of this application is not secure and one day becomes compromised.and
+when more and more websites on the internet ask user for their google password,for example
+and stored the copy of user's password in their local database,then the chance that user's
+password will eventually get stolen are very high.
+
+so oauth framework is designed to solve this problem.instead of giving away their username
+and password to a third party mobile application or a website.without a framework,the
+user will be redirected to a google login page instead.so the user will use google login
+to login with their google credential and they will enter their username and password 
+into a login page that was designed and created by google.the third party mobile
+application does not get to know users google password,and if the login is successful,then
+authorization server or in this case google server ask users if they allow this 
+third party application to view their user for us and if user taps on allow button and
+grant their permission,then google will pass special access token to this third party
+mobile application that it can use to access user data.this approach is much more secure.
+because user does not give away their username and password to a third party application.
+this third party application is not aware of users actual username and password,it 
+cannot store it in its databse and it cannot have an unlimited access to any user data.
+instead,it can access only a limited set of users data and for a limited time only because
+user has granted a read on the access to their photo as these third party mobile 
+application will not be able to use this same access token to access user email
+messages,for example or to access users google documents from a google drive.
+
+Oauth2 Roles:->
+i. Resource Owner:-> the first actor in our framework is called resource owner.resource
+is the informatin or the data that is being accessed and the owner is whoever owns that
+information.if the information that is being accessed is owned by a person,then we call
+the resource owner a user.so resource owner is a user who owns the information and is
+capable of granting access to this information.
+
+ii. Client:-> a client,an application that is access information on user's behalf,and this
+application can be a web application or it can be a mobile application or it could be 
+even a postman http client is being used to send a request to access users information.
+
+iii.Resource Server:-> so resource owner is a user who is using client application to access their information
+on resource server.resource sever is a server that is hosting user information,it could
+be a google server or it could be a facebook server or it could be your own server that 
+stores user data and users data on a resource server usually available via an API.so 
+resource server is not necessarily a hardware.if you are a developer who is building a
+monolithic springboot restful web applicatioin then a resource server will be your
+monolithic restful web service application.but if you're a developer who is building
+RESTFul micro services,then each micro services in your applicaiton will be considered a
+separate resource server.
+
+iv. Authorization Server:-> the authorization server is the server that issues access token
+to client application after successfully authenticating the resource owner and obtaining
+authorization.all major players like google,facebook,twitter or microsoft,they have 
+their own authorization servers.and this is why we as developer,we can implement functionality
+to allow users to log in into our apps with facebook or google or twitter accounts.but
+we as developer,we can also start up our own authorization servers.for example,there is
+spring authorization server and there is keyclock authorization server that we can run
+in a docker container or we can even integrate it in our springboot application.and there
+are other authorization servers that can run as standalone server application on our own
+hardwae.and there are other services that are available in the cloud and can be used
+as a hosted service.for example there is aws ignito server and there is microsoft
+identity platform and there is okta.
+
+
+
+Oauth 2.0 Client Types:->the example of client application can be a mobile app that
+user will use to access their information on a resource server,but there can be different
+kinds of client applications.
+i. secure app running on server
+ii. native apps on user device
+iii. single page browser-based app
+
+each of these different client types is capable of sending http request to an authorization
+server and for a client application to be able to communicate with authorization server
+it needs to register with authorization server and get its client I.D and client secret
+key.the client id and secret key are needed so that authorization server and the client
+application they can communicate with each other securely.when communicating with the
+authorization server,the client application will need to provide authorization server with
+it's client id,it is needed so that authorization server can recognizes the client 
+applicaiton.but sometimes the client application will also need to provide authoriztion
+server with a secret key.but not all of these types of client applications can securely
+store client security on their side.and this is why client applications,they are divided
+into two different groups,confidential clients and public clients.
+confidential clients are applications that are able to keep the client secret key securely
+and safe on their side.this these type of applications,they are register with authorization
+server as confidential clients and they are issued as secret access key.they are able to
+securely authenticate with authorization server using their client id and client secret
+key. public clients are applications that cannot gurantee the safety and confidentiallity
+of their client id and client secret key. by our specification these can be application
+that are browser based and that are run entirely in browser window.for example,single
+page javascript application.or it can be native application that is installed on user 
+phone or tablet or it can be even a desktop application running it on user's computer.
+so if there is a chance that a client applicaiton can be decompiled or its code can be
+viewed and decompiled applicaiton cannot gurantee the confidentiality of their secret
+key.then it is called public client when you register an application with the 
+authorization server as public then this type of application might not even be issued as
+secret key at all.this is becasue public application cannot gurantee the safety of it's
+secret key.for different types of clients oauth support different type of authorization
+flow.
+
+
+Oauth Access Token:-> once a user or resource owner successfully authenticate with the
+authorization server and granted their permission to let third party application to
+access their data,the authorization server will issue and access token and it will 
+pass this access token to a client application.the client applicaiton will then use 
+this access token whenever it needs to communicate with the resource server to access
+users data.to check if access token is valid,aind if it can be used to access the 
+requested information.we will send the request to an authorization server to check if the
+access token is not fake and it is valid.if the authorization server confirms that the access
+token is valid,then resource server can process the request.
+
+it is very improtant to note here that once client applicaiton has the access token,
+it can access users data on the resource server on users behalf without asking user for 
+username and password anymore.the access token must be considered by a client applicaiton
+as a sensitive information and it must be kept secure.if the client application needs
+to store access token,then it must store it in a secure location.and when the access 
+token is being used in http request,these request must be over a secure SSL connection.
+it is very important that the access token is kept secure so that it cannot be stolen.
+the only parties that are allowed to acces the access token on the client application is
+the authorization server and the resource server.
+
+the token may denote an identifier used to retrieve the authorization information or
+may self-contain the authorization information in a verifiable manner.different autho
+rization server have different implementation of the access token so it will be different.
+type:->
+-> identifier type:-> this type of identifier stored in a database and used to reference additional 
+authorization ifnormation associated with this token that is also stored in the 
+database.
+-> self-contian the authorization information:-> it will actually self-contained 
+authorization information,and identifier type token can be ust a random string of chara
+cters,these self-contained type fo token does actually contain much of information in it.
+and this is why it is much longer than the identifier type.the self-contained type
+token is actually a json object that contains users authorization information in it. and
+this json object is base64 encoded.you can take this access token and you can easily
+decoded using many free online tools that help you do base64 decoding and encoding.And
+once you decode this access token,you will actually see the authorization information
+that it contains.so this is why this type of access token,they must never contain as 
+sensitive information like password.anyone can decode and see the inforamtion.
+identifier type access token contains following information:-> access_token contain
+ii. user_id
+iii. scope
+iv. expires
+Note:-> self-contain access token is same as jwt token.
+
+
+OpenID Connect:-> when user authenticates with the authorization server,this authorization
+server will issue and provide the client application with an access token.now this access
+token can be as simple alphanumeric random string of characters that does not contain 
+any details about the currently authenticated user.Open ID connect was designed as an
+additional layer to provide our client applicaiton with information about the curretnlty
+authenticated user.so an openid connect comes as a additional layer on top of oauth 2 and 
+it is an identity layer that can provide the client applicaiton with an identity 
+informaiton about the user,the authorization server that supports openid connect  and 
+provide the client application with the identity information is also called an identity
+provider.
+when user authenticate with the authorization server,the authorization server will
+issue and provide client application wit an access token,but with an openid connect
+the authorization server additionally to an access token,will also provide client
+application with an id token.the id token contains user identity information and the
+client applicaiton can use this id token to extract from it some basic information about the
+current authenticated user.so the client application will now have two token,the id
+token and the access token.the id token will used to validate that user is who they
+claim to be and an access token is used to validate if the user is allowed to access a 
+requested resources from the resource server.
+
+Oauth 2.0 Grant Types:-> grant type is a way an application gets an access token.
+refresh token grant type used to exchange a refresh token for an access token.
+
+Authorization code grant:-> website visitor decides to allow this website to connect to 
+their facebook or google account and fetch some data,so they click on connect my account
+button and the website will then redirect to the authorization server url.this url will
+contain few request parameter. 
+i. GET/authorize
+ii. ?response_type=code //Required must be code
+iii. &state=hvjfsldkjk3443 //Recomended
+iv. &redirect_url = {Redirect uri} //Optional
+v. &scope={Scopes} //Optional
+vi. &client_id ={client id}  //Required
+
+
+Authorization flows:-> to get the access token
+
+
+authorization code flow:-> see the screenshot
+
+PKCE-enhanced authorization code flow:->see the screenshot
+
+client credentials code flow:->
+
+Password grant code flow:->
+
+Note:-> maximum life of access token is about 10 minutes.
+
+Authorization Server:->
+
+Keycloak:-> in this section, you will learn about one very popular identity and access
+management server that supports OpenID Connect and with the authorization flows and it is
+called keycloak.this is used in authorization server.there are a lot of dirrerent authorization
+server available in the market.there is aws congnito and okta,microsoft identity platform,
+spring authorization server and finally there is keycloak.it can be used in our springboot
+application as our authorization server.we can use it to let users authenticate with their
+application and then generate an access token and refresh token.and once a user is
+authenticated,keycloak will generate an access token and the refresh token.
+it is an open source identity and access management solution.you can use to add authentication
+to applications ans secure services with a minimum amount of work.it provides you with both
+web interface to manage users of your application as well as with rest api that you can
+use to add new and manage existing users.keycloak is oopen source so you can download it
+and run it as standalone application on your server.keycloak supports single-sign on(SSO).
+this means that once a user is login into one application with keycloak with the user will not
+need to log into another application again and also if user logs out of one application,they
+will also be logged out of all other applications.keycloak also supports social again,and 
+this means that you can let users login into your application with their social application 
+like facebook,github,twitter,google.if your organization has an existing user database,then
+it can also be integrated with keycloak.
+
+run keycloak server:-> C:\Users\Programmer\OneDrive\Desktop\keycloak-16.1.1\keycloak-16.1.1\bin\standalone.bat
+default port:8080
+
+running keycloak on specified port:-> C:\Users\Programmer\OneDrive\Desktop\keycloak-16.1.1\keycloak-16.1.1\bin\standalone.bat -Djboss.socket.binding.port-offset=100(8180)
+
+After starting keycloak server we need to add client to it on this server then call
+getting authorization code:-> http://localhost:8080/auth/realms/appsdeveloperblog/protocol/openid-connect/auth?
+client_id=photo-app-code-flow-client&
+response_type=code&scope=openid profile&
+redirect_uri=http://localhost:8083/callback
+to redirect to the authroizaion server login page.
+
+getting access token:->
+
+
+http://localhost:8080/auth/realms/appsdeveloperblog/protocol/openid-connect/token(POST) with x-www-form-urlencoded
+
+grant_type:authorization_code
+client_id:photo-app-code-flow-client
+client_secret:PmUcTAIZF3uVkrZppXHz7ZVpokGgdjDQ
+code:782ff7a3-207c-48b7-ba29-9e4c508a562b.368440ef-5a86-48ce-8a4a-f9ea43813e3e.576c2a71-ac13-4525-a1ed-bce953477940
+redirect_uri:http://localhost:8083/callback
+scope:openid profile
+
+response:-> 
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJPaEREeEVYekMwNTBGZzdOVGxsTmhmcWtialFUZWNaMG9YSjlEd2xOdmNVIn0.eyJleHAiOjE2NDQwNTg1NzMsImlhdCI6MTY0NDA1ODI3MywiYXV0aF90aW1lIjoxNjQ0MDU2Nzk4LCJqdGkiOiI0NzA1ZmQzZi1iYTdlLTQ4NTAtODQzYS01NmI2N2VhZmMyOTgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXV0aC9yZWFsbXMvYXBwc2RldmVsb3BlcmJsb2ciLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiY2IyMjI4MWEtMDIyMS00ZWZhLTliZTktZDg5YzhiZDFlMGRmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicGhvdG8tYXBwLWNvZGUtZmxvdy1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiMzY4NDQwZWYtNWE4Ni00OGNlLThhNGEtZjllYTQzODEzZTNlIiwiYWNyIjoiMCIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWFwcHNkZXZlbG9wZXJibG9nIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiIzNjg0NDBlZi01YTg2LTQ4Y2UtOGE0YS1mOWVhNDM4MTNlM2UiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJNYWhlc2ggTGFtaWNoaGFuZSIsInByZWZlcnJlZF91c2VybmFtZSI6Im1haGVzaC5sYW1pY2hoYW5lIiwiZ2l2ZW5fbmFtZSI6Ik1haGVzaCIsImZhbWlseV9uYW1lIjoiTGFtaWNoaGFuZSIsImVtYWlsIjoibWFoZXNobGFtaWNoaGFuZTA0OEBnbWFpbC5jb20ifQ.ZqAVKvioRxmvluwHyaK_kJyqlT8VeSZMDEp_4SZK4eJsWPHJ7t0HC-RAQEzBX7v46nmQ5wLa8AjWG2azS22tH0Hph4GVcUtuwahFKJzjLjMxNyMiD79epe610TXxSFjffH86uJqCIF7lduYEdsh6K3mYWvh0wCH13ImUQ2PL4QnCtkdZagM37y5dq1FUeJET86ytDmxCWKcf8CdbFdU3hVvIbd5oVC_0cI-8ozDShdLCNuOM1kHeiGLM6TDWHqm7s9u6rT9ZQaUuFMZf3wu8Z0RwALE3NjHSNp8efef55fT0SvVy6h64c-Gs1INDld0t4xGe8eou18Je7vfGjSKi_Q",
+    "expires_in": 300,
+    "refresh_expires_in": 1800,
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwMDIwYjk4ZS1iODBhLTQwYjUtYjAxMi0zMWIwMDEwY2MzYjkifQ.eyJleHAiOjE2NDQwNjAwNzMsImlhdCI6MTY0NDA1ODI3MywianRpIjoiOTZiZGQ1NjAtYjRkZC00OTc3LTk2YmQtNTY0MjY1ODNjOTYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2FwcHNkZXZlbG9wZXJibG9nIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2FwcHNkZXZlbG9wZXJibG9nIiwic3ViIjoiY2IyMjI4MWEtMDIyMS00ZWZhLTliZTktZDg5YzhiZDFlMGRmIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6InBob3RvLWFwcC1jb2RlLWZsb3ctY2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjM2ODQ0MGVmLTVhODYtNDhjZS04YTRhLWY5ZWE0MzgxM2UzZSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiIzNjg0NDBlZi01YTg2LTQ4Y2UtOGE0YS1mOWVhNDM4MTNlM2UifQ.iqydcYKNZU6Jt5W8A5Ohd20xbiO-XkHyf6dTeVWIdtg",
+    "token_type": "Bearer",
+    "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJPaEREeEVYekMwNTBGZzdOVGxsTmhmcWtialFUZWNaMG9YSjlEd2xOdmNVIn0.eyJleHAiOjE2NDQwNTg1NzMsImlhdCI6MTY0NDA1ODI3MywiYXV0aF90aW1lIjoxNjQ0MDU2Nzk4LCJqdGkiOiI2NmFhNGJiNS1hZDMyLTQwNzQtOWY2Yi05NmU4NWY0ZGE0MWIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXV0aC9yZWFsbXMvYXBwc2RldmVsb3BlcmJsb2ciLCJhdWQiOiJwaG90by1hcHAtY29kZS1mbG93LWNsaWVudCIsInN1YiI6ImNiMjIyODFhLTAyMjEtNGVmYS05YmU5LWQ4OWM4YmQxZTBkZiIsInR5cCI6IklEIiwiYXpwIjoicGhvdG8tYXBwLWNvZGUtZmxvdy1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiMzY4NDQwZWYtNWE4Ni00OGNlLThhNGEtZjllYTQzODEzZTNlIiwiYXRfaGFzaCI6InFINXowOWxZZ0lQV09ad3pxcl83V0EiLCJhY3IiOiIwIiwic2lkIjoiMzY4NDQwZWYtNWE4Ni00OGNlLThhNGEtZjllYTQzODEzZTNlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiTWFoZXNoIExhbWljaGhhbmUiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJtYWhlc2gubGFtaWNoaGFuZSIsImdpdmVuX25hbWUiOiJNYWhlc2giLCJmYW1pbHlfbmFtZSI6IkxhbWljaGhhbmUiLCJlbWFpbCI6Im1haGVzaGxhbWljaGhhbmUwNDhAZ21haWwuY29tIn0.dd_xVBNYV0u_b5A4F5BWvV_GdnoazyEeJZUE8rSOtXw60AeUrUxNGMgOLQZwqg_g9HDDkZLQqN7uHmZzQvng6To3bs8YfUcF7qlffcuPN7I1Vl0FOvQxfT-khji7QP-Ldk_fXNgnjlKXQ5e7JN8ku_VC-N-LWO5vfXWQ8NTsrw3MMkJCKi-jceQaem3gPstv9KH4tqxE-jukUqCsJ8JF90Te2ZLj4a0RZkdd3AQsj-z9Sne1nYLMOi-D2TG7c77POb5lqGlUH2WkZXSUKA1VsWjK-Vj4By3t8sAEbkSy0-7a5bVD1KosM-jEousI0j9X8E-T3dx3HpzsMS2rZ94dVw",
+    "not-before-policy": 0,
+    "session_state": "368440ef-5a86-48ce-8a4a-f9ea43813e3e",
+    "scope": "openid profile email"
+}
+
+Resource Server:-> it can be simple spring boot application.
+
+http://localhost:8081/users/status/check(GET) with bearer token get from authorization server
+
+
+Scope:-> scope is a mechanism in oauth 2.0 to limit an application's access to a user's
+account. an application can request one or more scopes.this information is then presented
+to the user in the consent screen,and the access token issued to the application wiill be
+limited to the scopes granted.
+
+scope = openid profile email address phone offline_access
+
+http://localhost:8087/login/oauth2/code/mywebclient
+
+test2@test.com
+mahesh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+confidential client:-> secure app running on server
+public client:-> native apps on users device,single page browser based app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

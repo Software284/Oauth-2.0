@@ -1,0 +1,5 @@
+spring.security.oauth2.client.registration.mywebclient.client-id = photo-app-code-flow-client
+spring.security.oauth2.client.registration.mywebclient.client-secret = PmUcTAIZF3uVkrZppXHz7ZVpokGgdjDQ
+
+
+

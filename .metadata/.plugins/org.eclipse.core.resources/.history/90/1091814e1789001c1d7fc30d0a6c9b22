@@ -1,0 +1,11 @@
+#spring.security.oauth2.client.registration.google.client-id = 
+#spring.security.oauth2.client.registration.google.client-secret =
+
+spring.security.oauth2.client.registration.facebook.client-id = 1285624878579920
+spring.security.oauth2.client.registration.facebook.client-secret = 3b61fc9c6bcaff0e4688fd24fa0cdb6a
+
+#spring.security.oauth2.client.registration.github.client-id = 
+#spring.security.oauth2.client.registration.github.client-secret =
+
+
+

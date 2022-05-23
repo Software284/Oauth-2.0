@@ -1,0 +1,14 @@
+#spring.security.oauth2.client.registration.google.client-id = 1023736495829-q5f4jb40n0ab6cbjlullt89c0td456m8.apps.googleusercontent.com
+#spring.security.oauth2.client.registration.google.client-secret = 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
+
+#spring.security.oauth2.client.registration.facebook.client-id = 1285624878579920
+#spring.security.oauth2.client.registration.facebook.client-secret = 3b61fc9c6bcaff0e4688fd24fa0cdb6a
+
+#spring.security.oauth2.client.registration.github.client-id = 
+#spring.security.oauth2.client.registration.github.client-secret =
+
+spring.security.oauth2.client.registration.okta.client-id = 0oa3o0e9ztHZRM1F75d7
+spring.security.oauth2.client.registration.okta.client-secret = H3w-POqqwXuIyyr2HuVONA14d_5feeh62AtESeLD
+spring.security.oauth2.client.registration.okta.scope = openid,profile
+
+

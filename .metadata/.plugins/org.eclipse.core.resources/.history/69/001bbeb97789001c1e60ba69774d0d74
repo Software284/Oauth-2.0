@@ -1,0 +1,22 @@
+package com.lamichhane.remote.storage.provider;
+
+import org.keycloak.component.ComponentModel;
+import org.keycloak.models.KeycloakSession;
+import org.keycloak.storage.UserStorageProvider;
+import org.keycloak.storage.UserStorageProviderFactory;
+
+public class RemoteUserStorageProviderFactory implements UserStorageProviderFactory {
+
+	@Override
+	public UserStorageProvider create(KeycloakSession session, ComponentModel model) {
+		
+		return new RemoteUserStorageProvider(session,model);
+	}
+
+	@Override
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

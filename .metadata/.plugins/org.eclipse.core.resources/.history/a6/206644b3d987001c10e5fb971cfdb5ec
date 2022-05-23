@@ -1,0 +1,9 @@
+package com.lamichhane.oauth2.resource.server.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/users")
+public class UsersController {
+
+}

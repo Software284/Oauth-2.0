@@ -1,0 +1,5 @@
+package com.lamichhane.appsdeveloper.client.sociallogin.controller;
+
+public class IndexPageController {
+
+}

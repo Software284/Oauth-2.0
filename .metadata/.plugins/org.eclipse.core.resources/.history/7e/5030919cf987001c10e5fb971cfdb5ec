@@ -1,0 +1,10 @@
+package com.lamichhane.oauth2.resource.server.response;
+
+public class UserRest {
+
+	private String userFirstName;
+	private String userLastName;
+	private String userId;
+	
+	
+}

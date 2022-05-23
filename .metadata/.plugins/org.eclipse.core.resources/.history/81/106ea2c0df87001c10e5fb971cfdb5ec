@@ -1,0 +1,11 @@
+package com.lamichhane.oauth2.resource.server.controller;
+
+@RestController
+@RequestMapping("/token")
+public class TokenController {
+	
+	public String getToken() {
+		return "";
+	}
+
+}

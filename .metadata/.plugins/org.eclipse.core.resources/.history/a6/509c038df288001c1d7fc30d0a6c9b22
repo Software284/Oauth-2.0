@@ -1,0 +1,8 @@
+package com.lamichhane.appsdeveloper.client.sociallogin.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class IndexPageController {
+
+}

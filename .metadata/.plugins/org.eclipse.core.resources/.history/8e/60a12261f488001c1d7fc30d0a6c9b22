@@ -1,0 +1,5 @@
+spring.security.oauth2.client.registration.google.client-id = photo-app-code-flow-client
+spring.security.oauth2.client.registration.google.client-secret = PmUcTAIZF3uVkrZppXHz7ZVpokGgdjDQ
+
+
+

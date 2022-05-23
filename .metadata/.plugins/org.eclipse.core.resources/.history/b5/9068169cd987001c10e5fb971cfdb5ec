@@ -1,0 +1,6 @@
+package com.lamichhane.oauth2.resource.server.controller;
+
+@RestController
+public class UsersController {
+
+}

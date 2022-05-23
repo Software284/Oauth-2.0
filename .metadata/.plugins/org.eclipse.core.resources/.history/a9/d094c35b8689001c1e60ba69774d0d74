@@ -1,0 +1,6 @@
+package com.lamichhane.remote.storage.provider;
+
+@Path("/users")
+public interface UsersApiService {
+
+}

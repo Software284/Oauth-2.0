@@ -1,0 +1,14 @@
+package com.lamichhane.remote.storage.provider;
+
+public class User {
+	
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String userId;
+	private String userName;
+	
+	
+	
+
+}

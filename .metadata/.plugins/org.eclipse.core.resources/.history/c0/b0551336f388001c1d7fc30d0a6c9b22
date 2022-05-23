@@ -1,0 +1,9 @@
+package com.lamichhane.appsdeveloper.client.sociallogin.security;
+
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+@EnableWebSecurity
+public class WebSecurity extends WebSecurityConfigurerAdapter{
+	
+
+}

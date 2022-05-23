@@ -1,0 +1,5 @@
+package com.lamichhane.oauth2.resource.server.controller;
+
+public class TokenController {
+
+}

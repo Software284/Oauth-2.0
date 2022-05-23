@@ -1,0 +1,6 @@
+package com.lamichhane.oauth2.resource.server.security;
+
+@EnableWebSecurity
+public class WebSecurity {
+
+}

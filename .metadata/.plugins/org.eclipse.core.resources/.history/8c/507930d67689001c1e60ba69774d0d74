@@ -1,0 +1,7 @@
+package com.lamichhane.remote.storage.provider;
+
+import org.keycloak.storage.UserStorageProviderFactory;
+
+public class RemoteUserStorageProviderFactory implements UserStorageProviderFactory {
+
+}

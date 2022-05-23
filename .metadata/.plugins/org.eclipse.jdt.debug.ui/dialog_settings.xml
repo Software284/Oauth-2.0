@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth0" value="74"/>
+	<item key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth1" value="812"/>
+	<item key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth2" value="82"/>
+	<item key="org.eclipse.jdt.debug.ui.jre_preference_page_context.sortColumn" value="1"/>
+	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Photos-Resource-Server/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.appsdeveloperblog.ws.api.photos{PhotosApplication.java[PhotosApplication&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=oauth2resourceserver/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.lamichhane.oauth2.resource.server{Oauth2resourceserverApplication.java[Oauth2resourceserverApplication&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Eureka-Server/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.lamichhane.eureka.server{EurekaDiscoveryServerApplication.java[EurekaDiscoveryServerApplication&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Albums-Resource-Server/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.appsdeveloperblog.ws.api.albums{AlbumsApplication.java[AlbumsApplication&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=ApiGateWay/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.gateway.ws.ApiGateWay{ApiGateWayApplication.java[ApiGateWayApplication&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=PhotoAppWebClient/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.lamichhane.web.client{PhotoAppWebClientApplication.java[PhotoAppWebClientApplication&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=oauth2resourceserver/C:\/Users\/Programmer\/.m2\/repository\/org\/springframework\/boot\/spring-boot\/2.6.3\/spring-boot-2.6.3.jar=/maven.pomderived=/true=/=/maven.pomderived=/true=/=/javadoc_location=/jar:file:\/C:\/Users\/Programmer\/.m2\/repository\/org\/springframework\/boot\/spring-boot\/2.6.3\/spring-boot-2.6.3-javadoc.jar\!\/=/=/maven.groupId=/org.springframework.boot=/=/maven.artifactId=/spring-boot=/=/maven.version=/2.6.3=/=/maven.scope=/compile=/&amp;lt;org.springframework.boot(SpringApplication.class[SpringApplication&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=SocialLogin/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.lamichhane.appsdeveloper.client.sociallogin{SocialLoginApplication.java[SocialLoginApplication&lt;/infoNode&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;"/>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_X_ORIGIN" value="91"/>
+			<item key="DIALOG_Y_ORIGIN" value="53"/>
+			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		</section>
+	</section>
+	<section name="expressionHistory">
+	</section>
+	<section name="org.eclipse.jdt.internal.debug.ui.ExpressionInformationControlCreator$ExpressionInformationControl">
+		<item key="WIDTH" value="614"/>
+		<item key="HEIGHT" value="194"/>
+		<item key="SashWeightTree" value="200"/>
+		<item key="SashWeightDetails" value="200"/>
+	</section>
+</section>
